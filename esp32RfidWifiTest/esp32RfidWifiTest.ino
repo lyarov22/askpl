@@ -3,105 +3,84 @@
 
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include <ArduinoJson.h>
 
-#define RST_PIN         22          // Пин для сброса (RST)
-#define SS_PIN          21          // Пин для выбора Slave (SDA)
+#define RST_PIN 22
+#define SS_PIN 21
 
-MFRC522 mfrc522(SS_PIN, RST_PIN);  // Создаем экземпляр MFRC522
+MFRC522 mfrc522(SS_PIN, RST_PIN);
 
-const char* ssid     = "SGP621";
-const char* password = "popopopa";
+const char* ssid = "OPPO_A74";
+const char* password = "04060708";
 
-const char* serverUrl = "http://192.168.43.23:5000/save_uuid";
-
+const char* serverUrl = "http://192.168.14.253:5000/api/users/register";
 
 void setup() {
-  Serial.begin(115200); // Инициализируем сериальный порт
-  SPI.begin();                     // Инициализация SPI
-  mfrc522.PCD_Init();                 // Инициализация модуля
-  mfrc522.PCD_SetAntennaGain(mfrc522.RxGain_max);  // Установка усиления антенны
-  mfrc522.PCD_AntennaOff();           // Перезагружаем антенну
-  mfrc522.PCD_AntennaOn();          // Включаем антенну
+  Serial.begin(115200);
+  SPI.begin();
+  mfrc522.PCD_Init();
+  mfrc522.PCD_SetAntennaGain(mfrc522.RxGain_max);
+  mfrc522.PCD_AntennaOff();
+  mfrc522.PCD_AntennaOn();
 
   WiFi.begin(ssid, password);
-
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        Serial.print(".");
-    }
-
-    Serial.println("");
-    Serial.println("WiFi connected.");
-    Serial.println("IP address: ");
-    Serial.println(WiFi.localIP());
-
   while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-    Serial.println("Подключение к Wi-Fi...");
+    delay(500);
+    Serial.print(".");
   }
-
-  Serial.println("Подключено к Wi-Fi");
-  
-  Serial.println(F("Наведите метку RFID для считывания UID..."));
-
+  Serial.println("");
+  Serial.println("WiFi connected.");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  Serial.println("Connected to Wi-Fi");
+  Serial.println(F("Hold an RFID tag near the reader..."));
 }
 
 void loop() {
-  /*static uint32_t rebootTimer = millis(); // Важный костыль против зависания модуля!
-  if (millis() - rebootTimer >= 1000) {   // Таймер с периодом 1000 мс
-    rebootTimer = millis();               // Обновляем таймер
-    digitalWrite(RST_PIN, HIGH);          // Сбрасываем модуль
-    delayMicroseconds(2);                 // Ждем 2 мкс
-    digitalWrite(RST_PIN, LOW);           // Отпускаем сброс
-    mfrc522.PCD_Init();                      // Инициализируем заного
-  }
-  */
-  
-  // Проверяем, есть ли новая метка в поле считывания
   if (mfrc522.PICC_IsNewCardPresent()) {
-    // Выбираем метку
     if (mfrc522.PICC_ReadCardSerial()) {
-      // Считываем UID метки
       String uid = "";
       for (byte i = 0; i < mfrc522.uid.size; i++) {
         uid += String(mfrc522.uid.uidByte[i] < 0x10 ? "0" : "");
         uid += String(mfrc522.uid.uidByte[i], HEX);
       }
-      Serial.print(F("UID метки: "));
+      Serial.print(F("UID: "));
       Serial.println(uid);
 
-      // Создаем экземпляр HTTPClient
+      // Create a JSON object
+      DynamicJsonDocument jsonDoc(128);
+      jsonDoc["uid"] = uid;
+
+      // Serialize the JSON to a string
+      String jsonString;
+      serializeJson(jsonDoc, jsonString);
+
+      // Create an HTTP client
       HTTPClient http;
-      
-      Serial.println("Отправка POST-запроса на сервер...");
-      
-      // Начинаем HTTP-запрос
+
+      Serial.println("Sending POST request to the server...");
+
+      // Start the HTTP request
       http.begin(serverUrl);
-      
-      // Устанавливаем заголовок Content-Type
-      http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-      
-      // Формируем тело POST-запроса с параметром uuid
-      String postBody = "uuid=" + uid;
-      
-      // Выполняем POST-запрос и получаем ответ
-      int httpResponseCode = http.POST(postBody);
-      
+
+      // Set the Content-Type header to indicate JSON data
+      http.addHeader("Content-Type", "application/json");
+
+      // Send the JSON data in the request body
+      int httpResponseCode = http.POST(jsonString);
+
       if (httpResponseCode > 0) {
         String response = http.getString();
-        Serial.print("Ответ от сервера: ");
+        Serial.print("Response from the server: ");
         Serial.println(response);
       } else {
-        Serial.print("Ошибка HTTP-запроса: ");
+        Serial.print("HTTP request error: ");
         Serial.println(httpResponseCode);
       }
-      
-      // Закрываем соединение
+
       http.end();
-      
-      delay(1000); // Задержка перед повторным сканированием
-      
-      // Ожидаем, пока метка не будет удалена из поля считывания
+      delay(1000);
+
       mfrc522.PICC_HaltA();
     }
   }
