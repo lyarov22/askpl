@@ -13,7 +13,7 @@ def indexView(request):
 @csrf_exempt
 def save_uuid(request):
     if request.method == 'POST':
-        uuid = request.POST.get('uuid')
+        uuid = request.POST.get('uid')
         existing_entry = UUIDEntry.objects.filter(uuid=uuid).first()
         
         if existing_entry:
