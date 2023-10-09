@@ -10,19 +10,19 @@
                 },  
 
                 "lesson_2":{
-                    "name":         "Python",
+                    "name":       "Python",
                     "time_start": "9:30",
                     "time_stop":  "10:50"
                 },     
 
                 "lesson_3":{  
-                    "name" :        "Physical Culture",
+                    "name" :      "Physical Culture",
                     "time_start": "11:00",
                     "time_stop":  "12:20"
                 },
 
                 "lesson_4":{
-                    "name":         "MK programming",
+                    "name":       "MK programming",
                     "time_start": "12:50",
                     "time_stop":  "14:10"
                 }
@@ -32,7 +32,7 @@
             "P3A": {
 
                 "lesson_1":{
-                    "name":         "MK programming",
+                    "name":       "MK programming",
                     "time_start": "8:00",
                     "time_stop":  "9:20"
                 },
@@ -43,7 +43,7 @@
                     "time_stop":  "10:50"
                 },
                 "lesson_3":{  
-                    "name" :        "Python",
+                    "name" :      "Python",
                     "time_start": "11:00",
                     "time_stop":  "12:20"
                 }
@@ -53,25 +53,25 @@
             "P3A": {
 
                 "lesson_1":{
-                    "name":         "MK programming",
+                    "name":       "MK programming",
                     "time_start": "8:00",
                     "time_stop":  "9:20"
                 },
 
                 "lesson_2":{
-                    "name":      "Law basics",  
+                    "name":       "Law basics",  
                     "time_start": "9:30",
                     "time_stop":  "10:50"
                 },
 
                 "lesson_3":{  
-                    "name" :     "Office work",
+                    "name" :      "Office work",
                     "time_start": "11:00",
                     "time_stop":  "12:20"
                 },
                 
                 "lesson_4":{
-                    "name":         "Physical Culture",
+                    "name":       "Physical Culture",
                     "time_start": "12:50",
                     "time_stop":  "14:10"
                 }
@@ -82,25 +82,25 @@
             "P3A":{
 
                 "lesson_1":{
-                    "name":      "Python",
+                    "name":         "Python",
                     "time_start_1": "8:00",
                     "time_stop_1":  "9:20"
                 },
 
                 "lesson_2":{
-                    "name":     "1C: Programming",  
+                    "name":         "1C: Programming",  
                     "time_start_2": "9:30",
                     "time_stop_2":  "10:50"
                 },
 
                 "lesson_3":{  
-                    "name" :      "1C: Programming",
+                    "name" :        "1C: Programming",
                     "time_start_3": "11:00",
                     "time_stop_3":  "12:20"
                 },
                 
                 "lesson_4":{
-                    "name":     "Software design",
+                    "name":         "Software design",
                     "time_start_4": "12:50",
                     "time_stop_4":  "14:10"
                 }
@@ -110,19 +110,19 @@
             "P3A":{
 
                 "lesson_1":{
-                    "name":     "Fundamentals of Sociology",
+                    "name":         "Fundamentals of Sociology",
                     "time_start_1": "8:00",
                     "time_stop_1":  "9:20"
                 },
 
                 "lesson_2":{
-                    "name":      "MK programming",  
+                    "name":         "MK programming",  
                     "time_start_2": "9:30",
                     "time_stop_2":  "10:50"
                 },
 
                 "lesson_3":{  
-                    "name" :     "Software design",
+                    "name" :        "Software design",
                     "time_start_3": "11:00",
                     "time_stop_3":  "12:20"
                 }
