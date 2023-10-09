@@ -47,26 +47,20 @@ void loop() {
       Serial.print(F("UID: "));
       Serial.println(uid);
 
-      // Create a JSON object
       DynamicJsonDocument jsonDoc(128);
       jsonDoc["uid"] = uid;
 
-      // Serialize the JSON to a string
       String jsonString;
       serializeJson(jsonDoc, jsonString);
 
-      // Create an HTTP client
       HTTPClient http;
 
       Serial.println("Sending POST request to the server...");
 
-      // Start the HTTP request
       http.begin(serverUrl);
 
-      // Set the Content-Type header to indicate JSON data
       http.addHeader("Content-Type", "application/json");
 
-      // Send the JSON data in the request body
       int httpResponseCode = http.POST(jsonString);
 
       if (httpResponseCode > 0) {
