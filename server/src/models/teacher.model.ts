@@ -1,15 +1,15 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-export interface TeacaherDocument extends Document {
+export interface TeacherDocument extends Document {
     username: string;
     password: string;
 }
 
-const teacherSchema = new Schema<TeacaherDocument>({
+const teacherSchema = new Schema<TeacherDocument>({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
 });
 
-const TeacherModel = mongoose.model<TeacaherDocument>('User', teacherSchema);
+const TeacherModel = mongoose.model<TeacherDocument>('Teacher', teacherSchema);
 
 export default TeacherModel;
