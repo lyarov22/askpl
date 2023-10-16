@@ -40,3 +40,16 @@ export const getUsers = async (req: Request, res: Response) => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 };
+
+export const getUser = async (req: Request, res: Response) => {
+    try {
+        const userId = req.params.id;
+
+        const user = await UserModel.findById(userId);
+
+        return res.status(200).json(user);
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+};
