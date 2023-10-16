@@ -5,37 +5,43 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
-#define RST_PIN 22
-#define SS_PIN 21
-
-MFRC522 mfrc522(SS_PIN, RST_PIN);
-
-const char* ssid = "OPPO_A74";
-const char* password = "04060708";
+const char* ssid[] = {"OPPO_A74", "ssid2", "ssid3"}; 
+const char* password[] = {"04060708", "password2", "password3"};
+const int numberOfNetworks = 3; 
 
 const char* serverUrl = "http://192.168.14.253:5000/api/users/register";
 
 void setup() {
   Serial.begin(115200);
-  SPI.begin();
-  mfrc522.PCD_Init();
-  mfrc522.PCD_SetAntennaGain(mfrc522.RxGain_max);
-  mfrc522.PCD_AntennaOff();
-  mfrc522.PCD_AntennaOn();
 
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
+  for (int i = 0; i < numberOfNetworks; i++) {
+    WiFi.begin(ssid[i], password[i]);
+    Serial.print("Attempting to connect to ");
+    Serial.println(ssid[i]);
+    
+    int attempts = 0;
+    while (WiFi.status() != WL_CONNECTED && attempts < 20) {  
+      delay(500);
+      Serial.print(".");
+      attempts++;
+    }
+
+    if (WiFi.status() == WL_CONNECTED) {
+      Serial.println("");
+      Serial.println("WiFi connected");
+      Serial.println("IP address: ");
+      Serial.println(WiFi.localIP());
+      break; 
+    } else {
+      Serial.println("");
+      Serial.println("Connection failed");
+    }
   }
-  Serial.println("");
-  Serial.println("WiFi connected.");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-  Serial.println("Connected to Wi-Fi");
-  Serial.println(F("Hold an RFID tag near the reader..."));
-}
 
+  if (WiFi.status() != WL_CONNECTED) {
+    Serial.println("Could not connect to any of the specified networks.");
+  }
+}
 void loop() {
   if (mfrc522.PICC_IsNewCardPresent()) {
     if (mfrc522.PICC_ReadCardSerial()) {
