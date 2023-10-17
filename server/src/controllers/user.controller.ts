@@ -6,6 +6,8 @@ export const registerUser = async (req: Request, res: Response) => {
     try {
         const { uid, name, surname, group } = req.body;
 
+        console.log(req.body.uid);
+
         if (!uid) {
             return res.status(400).json({ msg: 'UID are required.' });
         }
