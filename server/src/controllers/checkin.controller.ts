@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-// import CheckInModel from '../models/checkIn.model';
-import CheckInModel, { CheckInEntry } from '../models/checkin.model';
+import CheckInModel from '../models/checkIn.model';
+import { CheckInEntry } from '../models/checkIn.model';
 
 export const checkIn = async (req: Request, res: Response) => {
     try {

@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import TeacherModel from '../models/teacher.model';
-import jwt from 'jsonwebtoken';
 
 export const registerTeacher = async (req: Request, res: Response) => {
     try {
@@ -28,36 +27,6 @@ export const registerTeacher = async (req: Request, res: Response) => {
         return res.status(201).json({ msg: 'User registred successfully.' });
     } catch (error) {
         console.error('Error registering user:', error);
-        return res.status(500).json({ message: 'Internal server error' });
-    }
-};
-
-export const loginTeacher = async (req: Request, res: Response) => {
-    try {
-        const { username, password } = req.body;
-
-        if (!username || !password) {
-            return res.status(400).json({ msg: 'Username and password are required.' });
-        }
-
-        const user = await TeacherModel.findOne({ username });
-
-        if (!user) {
-            return res.status(400).json({ msg: 'User not found.' });
-        }
-
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-
-        if (!isPasswordValid) {
-            return res.status(401).json({ msg: 'Invalid password.' });
-        }
-
-        // Создание JWT токена
-        const token = jwt.sign({ userId: user._id }, 'your-secret-key', { expiresIn: '1h' });
-
-        return res.status(200).json({ userId: user._id, token });
-    } catch (error) {
-        console.error('Error logging in user:', error);
         return res.status(500).json({ message: 'Internal server error' });
     }
 };
