@@ -87,39 +87,93 @@ interface LessonsDocument {
     ]
 }
 
-const LessonSchema = new Schema({
-    name: { type: String },
-    teacher: { type: String },
-    cabinet: { type: String },
-    time_start: { type: String },
-    time_stop: { type: String },
+const lessonSchema = new Schema({
+    groups: [
+        {
+            group: { type: String },
+            days: {
+                monday: {
+                    lessons: [
+                        {
+                            name: { type: String },
+                            teacher: { type: String },
+                            cabinet: { type: String },
+                            time_start: { type: String },
+                            time_stop: { type: String }
+                        }
+                    ]
+                },
+                tuesday: {
+                    lessons: [
+                        {
+                            name: { type: String },
+                            teacher: { type: String },
+                            cabinet: { type: String },
+                            time_start: { type: String },
+                            time_stop: { type: String }
+                        }
+                    ]
+                },
+                wednesday: {
+                    lessons: [
+                        {
+                            name: { type: String },
+                            teacher: { type: String },
+                            cabinet: { type: String },
+                            time_start: { type: String },
+                            time_stop: { type: String }
+                        }
+                    ]
+                },
+                thursday: {
+                    lessons: [
+                        {
+                            name: { type: String },
+                            teacher: { type: String },
+                            cabinet: { type: String },
+                            time_start: { type: String },
+                            time_stop: { type: String }
+                        }
+                    ]
+                },
+                friday: {
+                    lessons: [
+                        {
+                            name: { type: String },
+                            teacher: { type: String },
+                            cabinet: { type: String },
+                            time_start: { type: String },
+                            time_stop: { type: String }
+                        }
+                    ]
+                },
+                saturday: {
+                    lessons: [
+                        {
+                            name: { type: String },
+                            teacher: { type: String },
+                            cabinet: { type: String },
+                            time_start: { type: String },
+                            time_stop: { type: String }
+                        }
+                    ]
+                },
+                sunday: {
+                    lessons: [
+                        {
+                            name: { type: String },
+                            teacher: { type: String },
+                            cabinet: { type: String },
+                            time_start: { type: String },
+                            time_stop: { type: String }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
 });
 
-// Определение схемы для дней недели
-const DaySchema = new Schema({
-    lessons: [LessonSchema], // Массив уроков внутри дня
-});
+const LessonModel = mongoose.model('Lessons', lessonSchema);
 
-// Определение схемы для групп
-const GroupSchema = new Schema({
-    group: { type: String },
-    days: {
-        monday: DaySchema,
-        tuesday: DaySchema,
-        wednesday: DaySchema,
-        thursday: DaySchema,
-        friday: DaySchema,
-        saturday: DaySchema,
-        sunday: DaySchema,
-    },
-});
-
-// Определение схемы для уроков
-const LessonsDocumentSchema = new Schema({
-    groups: [GroupSchema], // Массив групп
-});
-
-// Создание модели на основе схемы
-const LessonsModel = mongoose.model<LessonsDocument>('Lesson', LessonsDocumentSchema);
-
-export default LessonsModel;
+export default LessonModel;
