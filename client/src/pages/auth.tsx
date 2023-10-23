@@ -13,30 +13,30 @@ const auth = () => {
     const router = useRouter();
 
     const handleLogin = async () => {
-        if (!username || !password) {
-            console.error('Имя пользователя и пароль обязательны для входа.');
-        } else {
-            try {
-                const response = await axios.post('http://localhost:5000/api/v1/users/login', {
-                    username,
-                    password,
-                });
-                const { token, userId } = response.data;
+        // if (!username || !password) {
+        //     console.error('Имя пользователя и пароль обязательны для входа.');
+        // } else {
+        //     try {
+        //         const response = await axios.post('http://localhost:5000/api/v1/users/login', {
+        //             username,
+        //             password,
+        //         });
+        //         const { token, userId } = response.data;
 
-                if (token) {
-                    dispatch(loginUser({ token, userId }));
+        //         if (token) {
+        //             dispatch(loginUser({ token, userId }));
 
-                    localStorage.setItem('token', token);
-                    localStorage.setItem('userId', userId);
+        //             localStorage.setItem('token', token);
+        //             localStorage.setItem('userId', userId);
 
-                    router.push('/start');
-                } else {
-                    console.error('Ошибка аутентификации: Токен не получен.');
-                }
-            } catch (error: any) {
-                console.error(`Ошибка при попытке входа: ${error.response.data.message}`);
-            }
-        }
+        //             router.push('/start');
+        //         } else {
+        //             console.error('Ошибка аутентификации: Токен не получен.');
+        //         }
+        //     } catch (error: any) {
+        //         console.error(`Ошибка при попытке входа: ${error.response.data.message}`);
+        //     }
+        // }
     };
 
     return (
