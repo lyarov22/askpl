@@ -1,150 +1,160 @@
 {
-    "days": {
-        "monday": {
-            "P3A": {
-                "lesson_1": {
-                    "name": "Код програмирования",
-                    "teacher": "Мырзабекова Д.Е",
-                    "cabinet": "211",
-                    "time_start": "8:00",
-                    "time_stop": "9:20"
+    "groups": [
+        {
+            "group":"P3A",
+            "days":{
+                "monday": {
+                    "lessons": [
+                        {
+                        "name": "Код програмирования",
+                        "teacher": "Мырзабекова Д.Е",
+                        "cabinet": "211",
+                        "time_start": "8:00",
+                        "time_stop": "9:20"
+                        },{
+                            "name": "Способы  програмирования",
+                            "teacher": "Нехорошев В.Д",
+                            "cabinet": "310",
+                            "time_start": "9:30",
+                            "time_stop": "10:50"
+                        },{
+                            "name": "Физическая культура",
+                            "teacher": "Зеленин В.А",
+                            "cabinet": "none",
+                            "time_start": "11:00",
+                            "time_stop": "12:20"
+                        },{
+                            "name": "Программирование цифровых устройств",
+                            "teacher": "Зиаятдинов В.Р.",
+                            "cabinet": "313",
+                            "time_start": "12:50",
+                            "time_stop": "14:10"
+                        }
+                        
+                    ]
+                
                 },
-                "lesson_2": {
-                    "name": "Способы  програмирования",
-                    "teacher": "Нехорошев В.Д",
-                    "cabinet": "310",
-                    "time_start": "9:30",
-                    "time_stop": "10:50"
-                },
-                "lesson_3": {
-                    "name": "Физическая культура",
-                    "teacher": "Зеленин В.А",
-                    "cabinet": "none",
-                    "time_start": "11:00",
-                    "time_stop": "12:20"
-                },
-                "lesson_4": {
-                    "name": "Программирование цифровых устройств",
-                    "teacher": "Зиаятдинов В.Р.",
-                    "cabinet": "313",
-                    "time_start": "12:50",
-                    "time_stop": "14:10"
-                }
-            }
-        },
-        "tuesday": {
-            "P3A": {
-                "lesson_1": {
-                    "name": "Программирование цифровых устройств",
-                    "teacher": "Зиаятдинов В.Р.",
-                    "cabinet": "313",
-                    "time_start": "8:00",
-                    "time_stop": "9:20"
-                },
-                "lesson_2": {
-                    "name": "Проектирование программного обеспечения",
-                    "teacher": "Шаблыгин В.В",
-                    "cabinet": "401",
-                    "time_start": "9:30",
-                    "time_stop": "10:50"
-                },
-                "lesson_3": {
-                    "name": "Способы  програмирования",
-                    "teacher": "Нехорошев В.Д",
-                    "cabinet": "310",
-                    "time_start": "11:00",
-                    "time_stop": "12:20"
-                }
-            }
-        },
-        "wednesday": {
-            "P3A": {
-                "lesson_1": {
-                    "name": "Программирование цифровых устройств",
-                    "teacher": "Зиаятдинов В.Р.",
-                    "cabinet": "313",
-                    "time_start": "8:00",
-                    "time_stop": "9:20"
-                },
-                "lesson_2": {
-                    "name": "Основы права",
-                    "teacher": "",
-                    "cabinet": "103",
-                    "time_start": "9:30",
-                    "time_stop": "10:50"
-                },
-                "lesson_3": {
-                    "name": "Делопроизводство ",
-                    "teacher": "Айтбосынова А.С.",
-                    "cabinet": "104",
-                    "time_start": "11:00",
-                    "time_stop": "12:20"
-                },
-                "lesson_4": {
-                    "name": "Физическая культура",
-                    "teacher": "Зеленин В.А",
-                    "cabinet": "none",
-                    "time_start": "12:50",
-                    "time_stop": "14:10"
-                }
-            }
-        },
-        "thursday": {
-            "P3A": {
-                "lesson_1": {
-                    "name": "Способы  програмирования",
-                    "teacher": "Нехорошев В.Д",
-                    "cabinet": "310",
-                    "time_start": "8:00",
-                    "time_stop": "9:20"
-                },
-                "lesson_2": {
-                    "name": "Код програмирования",
-                    "teacher": "Мырзабекова Д.Е",
-                    "cabinet": "211",
-                    "time_start": "9:30",
-                    "time_stop": "10:50"
-                },
-                "lesson_3": {
-                    "name": "Код програмирования",
-                    "teacher": "Мырзабекова Д.Е",
-                    "cabinet": "211",
-                    "time_start": "11:00",
-                    "time_stop": "12:20"
-                },
-                "lesson_4": {
-                    "name": "Проектирование программного обеспечения",
-                    "teacher": "Шаблыгин В.В",
-                    "cabinet": "401",
-                    "time_start": "12:50",
-                    "time_stop": "14:10"
-                }
-            }
-        },
-        "friday": {
-            "P3A": {
-                "lesson_1": {
-                    "name": "Социология",
-                    "teacher": "Разбекова Г.Б.",
-                    "cabinet": "213",
-                    "time_start": "8:00",
-                    "time_stop": "9:20"
-                },
-                "lesson_2": {
-                    "name": "Программирование цифровых устройств",
-                    "teacher": "Зиаятдинов В.Р.",
-                    "cabinet": "313",
-                    "time_start": "9:30",
-                    "time_stop": "10:50"
-                },
-                "lesson_3": {
-                    "name": "Проектирование программного обеспечения",
-                    "teacher": "Шаблыгин В.В",
-                    "cabinet": "401",
-                    "time_start": "11:00",
-                    "time_stop": "12:20"
-                }
+            "tuesday": {
+                    "lessons": [
+                        {
+                        "name": "Программирование цифровых устройств",
+                        "teacher": "Зиаятдинов В.Р.",
+                        "cabinet": "313",
+                        "time_start": "8:00",
+                        "time_stop": "9:20"
+                    },
+                   {
+                        "name": "Проектирование программного обеспечения",
+                        "teacher": "Шаблыгин В.В",
+                        "cabinet": "401",
+                        "time_start": "9:30",
+                        "time_stop": "10:50"
+                    },
+                    {
+                        "name": "Способы  програмирования",
+                        "teacher": "Нехорошев В.Д",
+                        "cabinet": "310",
+                        "time_start": "11:00",
+                        "time_stop": "12:20"
+                    }
+                ]
+            },
+            "wednesday": {
+                    "lessons": [
+                        {
+                        "name": "Программирование цифровых устройств",
+                        "teacher": "Зиаятдинов В.Р.",
+                        "cabinet": "313",
+                        "time_start": "8:00",
+                        "time_stop": "9:20"
+                    },
+                    {
+                        "name": "Основы права",
+                        "teacher": "",
+                        "cabinet": "103",
+                        "time_start": "9:30",
+                        "time_stop": "10:50"
+                    },
+                    {
+                        "name": "Делопроизводство ",
+                        "teacher": "Айтбосынова А.С.",
+                        "cabinet": "104",
+                        "time_start": "11:00",
+                        "time_stop": "12:20"
+                    },
+                     {
+                        "name": "Физическая культура",
+                        "teacher": "Зеленин В.А",
+                        "cabinet": "none",
+                        "time_start": "12:50",
+                        "time_stop": "14:10"
+                    }
+                ]
+                
+            },
+            "thursday": {
+                    "lessons": [
+                        {
+                        "name": "Способы  програмирования",
+                        "teacher": "Нехорошев В.Д",
+                        "cabinet": "310",
+                        "time_start": "8:00",
+                        "time_stop": "9:20"
+                    },
+                     {
+                        "name": "Код програмирования",
+                        "teacher": "Мырзабекова Д.Е",
+                        "cabinet": "211",
+                        "time_start": "9:30",
+                        "time_stop": "10:50"
+                    },
+                     {
+                        "name": "Код програмирования",
+                        "teacher": "Мырзабекова Д.Е",
+                        "cabinet": "211",
+                        "time_start": "11:00",
+                        "time_stop": "12:20"
+                    },
+                     {
+                        "name": "Проектирование программного обеспечения",
+                        "teacher": "Шаблыгин В.В",
+                        "cabinet": "401",
+                        "time_start": "12:50",
+                        "time_stop": "14:10"
+                    }
+                ]
+                
+            },
+            "friday": {
+                    "lessons": [
+                        {
+                        "name": "Социология",
+                        "teacher": "Разбекова Г.Б.",
+                        "cabinet": "213",
+                        "time_start": "8:00",
+                        "time_stop": "9:20"
+                    },
+                     {
+                        "name": "Программирование цифровых устройств",
+                        "teacher": "Зиаятдинов В.Р.",
+                        "cabinet": "313",
+                        "time_start": "9:30",
+                        "time_stop": "10:50"
+                    },
+                     {
+                        "name": "Проектирование программного обеспечения",
+                        "teacher": "Шаблыгин В.В",
+                        "cabinet": "401",
+                        "time_start": "11:00",
+                        "time_stop": "12:20"
+                    }
+                ]
             }
         }
     }
+      
+    ]
 }
+                
+    
+
