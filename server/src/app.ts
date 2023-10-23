@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import userRouter from './routes/user.routes';
 import checkInRouter from './routes/checkin.routes';
 import teacherRouter from './routes/teacher.routes';
+import lessonRouter from './routes/lesson.routes';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/api/users', userRouter);
 app.use('/api/marks', checkInRouter);
 app.use('/api/teachers', teacherRouter);
+app.use('/api/lessons', lessonRouter)
 
 app.use((req, res) => {
     res.status(404).json({ message: 'Route not found' });
