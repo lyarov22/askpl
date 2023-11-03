@@ -1,8 +1,9 @@
 import { Typography } from '@material-tailwind/react';
+import axios from 'axios';
 import { Button } from 'flowbite-react';
 import { useRouter } from 'next/navigation';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const lessons = () => {
     const router = useRouter();
