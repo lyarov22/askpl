@@ -5,87 +5,27 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 import axios from 'axios';
-type GroupData = [
-    {
-        group: string;
-        days: [
-            monday: {
-                lessons: [
-                    {
-                        name: string;
-                        teacher: string;
-                        cabinet: string;
-                        time_start: string;
-                        time_stop: string;
-                    }
-                ]
-            },
-            tuesday: {
-                lessons: [
-                    {
-                        name: string;
-                        teacher: string;
-                        cabinet: string;
-                        time_start: string;
-                        time_stop: string;
-                    }
-                ]
-            },
-            wednesday: {
-                lessons: [
-                    {
-                        name: string;
-                        teacher: string;
-                        cabinet: string;
-                        time_start: string;
-                        time_stop: string;
-                    }
-                ]
-            },
-            thursday: {
-                lessons: [
-                    {
-                        name: string;
-                        teacher: string;
-                        cabinet: string;
-                        time_start: string;
-                        time_stop: string;
-                    }
-                ]
-            },
-            friday: {
-                lessons: [
-                    {
-                        name: string;
-                        teacher: string;
-                        cabinet: string;
-                        time_start: string;
-                        time_stop: string;
-                    }
-                ]
-            }
-        ]
-    }
-    ]
+import { GroupData } from '@/types';
 
 const start = () => {
     const router = useRouter();
 
-    const [groups, setGroups] = useState<GroupData>()
+    const [groups, setGroups] = useState<GroupData>();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post('http://localhost:8080/api/lessons/get-lesson', { lessonId: '6544761e040e5763b11ca371'})
-                setGroups(response.data.groups)
+                const response = await axios.post('http://localhost:8080/api/lessons/get-lesson', {
+                    lessonId: '6544761e040e5763b11ca371',
+                });
+                setGroups(response.data.groups);
                 console.log(response.data.groups);
-            } 
-            catch(error) {
-                console.log(error)
-            } 
-        }
-        fetchData()
-    }, [])
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+    }, []);
 
     const handleGroupClick = (group: string) => {
         router.push(`/group/${group}/lessons`);
@@ -97,13 +37,12 @@ const start = () => {
                 Выберите группу которую хотите посмотреть
             </Typography>
             <div className="grid grid-cols-9 gap-4">
-                { groups &&
+                {groups &&
                     groups.map((item, index) => (
                         <Button key={index} color="blue" className="shadow-2xl" onClick={() => handleGroupClick('P3A')}>
                             {item.group}
                         </Button>
-                    ))
-                }
+                    ))}
             </div>
         </div>
     );

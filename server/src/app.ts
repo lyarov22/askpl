@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-const mongodbUri = process.env.MONGODB_URI || '';
+const mongodbUri = process.env.MONGODB_URI_2 || '';
 mongoose.connect(mongodbUri);
 
 app.use(cors());
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use('/api/users', userRouter);
 app.use('/api/marks', checkInRouter);
 app.use('/api/teachers', teacherRouter);
-app.use('/api/lessons', lessonRouter)
+app.use('/api/lessons', lessonRouter);
 
 app.use((req, res) => {
     res.status(404).json({ message: 'Route not found' });
