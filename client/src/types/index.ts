@@ -60,3 +60,12 @@ export type GroupData = [
         ];
     }
 ];
+
+export interface AllLessons {
+    lessons: [
+        {
+            name: string;
+            floor: number;
+        }
+    ];
+}

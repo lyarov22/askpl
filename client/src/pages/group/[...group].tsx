@@ -1,25 +1,22 @@
 import { Button, Typography } from '@material-tailwind/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import instance from '@/lib/api';
-import { GroupData } from '@/types';
+import { AllLessons } from '@/types';
 
 const Group = () => {
     const router = useRouter();
     const group = router.query.group?.[0];
 
-    const [data, setData] = useState<GroupData>();
+    const [data, setData] = useState<AllLessons>();
 
     useEffect(() => {
         const fetchData = async () => {
-            const groupResponse = await instance('/api/lessons/get-lessons');
+            const groupResponse = await instance('/api/lessons/get-all-lessons');
             setData(groupResponse.data);
         };
 
         fetchData();
-
-        // const groupData = data.find((group) => group)
     }, []);
 
     return (
