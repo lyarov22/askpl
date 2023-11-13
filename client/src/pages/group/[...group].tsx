@@ -2,16 +2,18 @@ import { Button, Typography } from '@material-tailwind/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import instance from '@/lib/api';
+import { GroupData } from '@/types';
 
 const Group = () => {
     const router = useRouter();
     const group = router.query.group?.[0];
 
-    const [data, setData] = useState();
+    const [data, setData] = useState<GroupData>();
 
     useEffect(() => {
         const fetchData = async () => {
-            const groupResponse = await axios('http://localhost:8080/api/lessons/get-lessons');
+            const groupResponse = await instance('/api/lessons/get-lessons');
             setData(groupResponse.data);
         };
 
@@ -34,11 +36,7 @@ const Group = () => {
                         <Typography variant="h6" className="mb-2">
                             1 этаж:
                         </Typography>
-                        <div className="grid grid-cols-3 gap-4">
-                            <Button color="blue" className="shadow-2xl">
-                                Программирование МК
-                            </Button>
-                        </div>
+                        <div className="grid grid-cols-3 gap-4">{/* {data && data[0].days.} */}</div>
                     </div>
                     <div>
                         <Typography variant="h6" className="mb-2">
