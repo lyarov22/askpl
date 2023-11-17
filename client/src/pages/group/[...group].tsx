@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import instance from '@/lib/api';
 import { AllLessons } from '@/types';
+import { redirect } from 'next/navigation';
 
 const Group = () => {
     const router = useRouter();
@@ -40,7 +41,12 @@ const Group = () => {
                                     data
                                         .filter((item) => item.floor === floorIndex + 1)
                                         .map((item, index) => (
-                                            <Button key={index} color="blue" className="shadow-2xl">
+                                            <Button
+                                                key={index}
+                                                color="blue"
+                                                className="shadow-2xl"
+                                                onClick={() => router.push(`/group/${group}/lessons/${item.route}`)}
+                                            >
                                                 {item.name}
                                             </Button>
                                         ))}

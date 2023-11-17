@@ -1,39 +1,48 @@
 {
     "lessons": [
         {
-            "name": "Код програмирования",
+            "name": "Код програмирование",
+            "route": "code-programming",
             "floor": 2
         },
         {
             "name": "Способы  програмирования",
+            "route": "programming-methods",
             "floor": 3
         },
         {
             "name": "Физическая культура",
+            "route": "physical-culture",
             "floor": 0
         },
         {
             "name": "Программирование цифровых устройств",
+            "route": "digital-device-programming",
             "floor": 3
         },
         {
             "name": "Проектирование программного обеспечения",
+            "route": "software-design",
             "floor": 4
         },
         {
             "name": "Основы права",
+            "route": "law-basics",
             "floor": 1
         },
         {
             "name": "Делопроизводство",
+            "route": "office-work",
             "floor": 1
         },
         {
             "name": "Политология",
+            "route": "political-science",
             "floor": 2
         },
         {
-            "name": "Фиолософия",
+            "name": "Философия",
+            "route": "philosophy",
             "floor": 2
         }
     ]

@@ -61,4 +61,4 @@ export type GroupData = [
     }
 ];
 
-export type AllLessons = [{ name: string; floor: number }];
+export type AllLessons = [{ name: string; route: string; floor: number }];
