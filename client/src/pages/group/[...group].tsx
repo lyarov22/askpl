@@ -7,13 +7,14 @@ import { AllLessons } from '@/types';
 const Group = () => {
     const router = useRouter();
     const group = router.query.group?.[0];
+    const floors = 4;
 
     const [data, setData] = useState<AllLessons>();
 
     useEffect(() => {
         const fetchData = async () => {
             const groupResponse = await instance('/api/lessons/get-all-lessons');
-            setData(groupResponse.data);
+            setData(groupResponse.data[0].lessons);
         };
 
         fetchData();
@@ -29,32 +30,23 @@ const Group = () => {
                     </Typography>
                 </div>
                 <div className=" w-1/3 mx-auto space-y-4">
-                    <div>
-                        <Typography variant="h6" className="mb-2">
-                            1 этаж:
-                        </Typography>
-                        <div className="grid grid-cols-3 gap-4">{/* {data && data[0].days.} */}</div>
-                    </div>
-                    <div>
-                        <Typography variant="h6" className="mb-2">
-                            2 этаж:
-                        </Typography>
-                    </div>
-                    <div>
-                        <Typography variant="h6" className="mb-2">
-                            3 этаж:
-                        </Typography>
-                    </div>
-                    <div>
-                        <Typography variant="h6" className="mb-2">
-                            4 этаж:
-                        </Typography>
-                    </div>
-                    <div>
-                        <Typography variant="h6" className="mb-2">
-                            5 этаж:
-                        </Typography>
-                    </div>
+                    {Array.from({ length: floors }, (_, floorIndex) => (
+                        <div key={floorIndex}>
+                            <Typography variant="h6" className="mb-2">
+                                {`${floorIndex + 1} этаж:`}
+                            </Typography>
+                            <div className="grid grid-cols-3 gap-4">
+                                {data &&
+                                    data
+                                        .filter((item) => item.floor === floorIndex + 1)
+                                        .map((item, index) => (
+                                            <Button key={index} color="blue" className="shadow-2xl">
+                                                {item.name}
+                                            </Button>
+                                        ))}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </>
