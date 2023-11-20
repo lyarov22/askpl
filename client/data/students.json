@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Асылбеков Даниял",
+        "attendance": [
+            { "date": "2023-01-01", "present": true },
+            { "date": "2023-01-02", "present": true },
+            { "date": "2023-01-03", "present": true }
+        ]
+    },
+    {
+        "name": "Герман Влад",
+        "attendance": [
+            { "date": "2023-01-01", "present": true },
+            { "date": "2023-01-02", "present": true },
+            { "date": "2023-01-03", "present": true }
+        ]
+    },
+    {
+        "name": "Ахметова Мадина",
+        "attendance": [
+            { "date": "2023-01-01", "present": false },
+            { "date": "2023-01-02", "present": true },
+            { "date": "2023-01-03", "present": true }
+        ]
+    },
+    {
+        "name": "Шамиев Шамиль",
+        "attendance": [
+            { "date": "2023-01-01", "present": true },
+            { "date": "2023-01-02", "present": false },
+            { "date": "2023-01-03", "present": true }
+        ]
+    },
+    {
+        "name": "Рыбалкин Никита",
+        "attendance": [
+            { "date": "2023-01-01", "present": false },
+            { "date": "2023-01-02", "present": false },
+            { "date": "2023-01-03", "present": true }
+        ]
+    }
+]

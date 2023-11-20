@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 
 import axios from 'axios';
 import { GroupData } from '@/types';
+import Head from 'next/head';
 
 const start = () => {
     const router = useRouter();
@@ -31,20 +32,30 @@ const start = () => {
         router.push(`/group/${group}/lessons`);
     };
     return (
-        <div className="flex flex-col justify-center items-center h-screen space-y-4">
-            <Typography variant="h2">Добро пожаловать!</Typography>
-            <Typography variant="h4" className="font-normal">
-                Выберите группу которую хотите посмотреть
-            </Typography>
-            <div className="grid grid-cols-9 gap-4">
-                {groups &&
-                    groups.map((item, index) => (
-                        <Button key={index} color="blue" className="shadow-2xl" onClick={() => handleGroupClick('P3A')}>
-                            {item.group}
-                        </Button>
-                    ))}
+        <>
+            <Head>
+                <title>ASKPL | Welcome</title>
+            </Head>
+            <div className="flex flex-col justify-center items-center h-screen space-y-4">
+                <Typography variant="h2">Добро пожаловать!</Typography>
+                <Typography variant="h4" className="font-normal">
+                    Выберите группу которую хотите посмотреть
+                </Typography>
+                <div className="grid grid-cols-9 gap-4">
+                    {groups &&
+                        groups.map((item, index) => (
+                            <Button
+                                key={index}
+                                color="blue"
+                                className="shadow-2xl"
+                                onClick={() => handleGroupClick('P3A')}
+                            >
+                                {item.group}
+                            </Button>
+                        ))}
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
