@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = './sqlite.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlite.db'
 db = SQLAlchemy(app)
 
 class UUIDEntry(db.Model):
@@ -15,26 +15,26 @@ class UUIDEntry(db.Model):
 @app.route('/save_uuid', methods=['POST'])
 def save_uuid():
     if 'uuid' in request.form:
-        uuid = request.form['uuid']
+        uuid = request.form['uid']
         # Проверяем, существует ли запись с данным UUID в БД
         existing_entry = UUIDEntry.query.filter_by(uuid=uuid).first()
         
         if existing_entry:
-            return jsonify({'message': 'UUID уже существует в БД'})
+            return jsonify({'msg': 'UUID уже существует в БД'})
 
         # Если запись с данным UUID не существует, создаем новую запись
         new_entry = UUIDEntry(uuid=uuid)
         db.session.add(new_entry)
         db.session.commit()
         
-        return jsonify({'message': 'UUID успешно сохранен'})
+        return jsonify({'msg': 'UUID успешно сохранен'})
     else:
         return jsonify({'error': 'Параметр uuid отсутствует в запросе'}), 400
 
 @app.route('/get_uuid', methods=['GET'])
 def get_uuid():
     if 'uuid' in request.args:
-        uuid = request.args['uuid']
+        uuid = request.args['uid']
         entry = UUIDEntry.query.filter_by(uuid=uuid).first()
         
         if entry:
@@ -49,4 +49,4 @@ def get_uuid():
         return jsonify({'error': 'Параметр uuid отсутствует в запросе'}), 400
 
 if __name__ == '__main__':
-    app.run(host="192.168.43.23", port=5000)
+    app.run(host="192.168.192.51", port=5000)
