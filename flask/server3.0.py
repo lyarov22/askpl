@@ -26,4 +26,4 @@ def get_uuid():
     return jsonify({'uuids': list(uids)})
 
 if __name__ == '__main__':
-    app.run(host="192.168.192.51", port=5000)
+    app.run(host="192.168.110.51", port=5000)

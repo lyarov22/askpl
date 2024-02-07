@@ -31,9 +31,10 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);
 const char* ssid = "Мой WiFi";
 const char* password = "popopopa";
 
-const char* serverUrl = "http://192.168.192.51:5000/check_uuid";
+const char* serverUrl = "http://192.168.110.51:5000/check_uuid";
 
 String text = "";
+String type = "";
 
 void displayWriter(const char* text){
   display.clearDisplay();
@@ -102,6 +103,7 @@ void setup() {
 
 void loop() {
   text = "";
+  type = "";
   if (mfrc522.PICC_IsNewCardPresent()) {
     if (mfrc522.PICC_ReadCardSerial()) {
       String uid = "";
@@ -117,6 +119,7 @@ void loop() {
       // Create a JSON object
       DynamicJsonDocument jsonDoc(128);
       jsonDoc["uid"] = uid;
+      jsonDoc["type"] = type;
 
       // Serialize the JSON to a string
       String jsonString;
